@@ -263,7 +263,69 @@
                 { id: "ingles2", name: "Inglés II", area: "Institucional", credits: "2 SCT", prerequisites: ["ingles1"] }
             ]
         },
-        // ... (los otros semestres con la misma estructura)
+        {
+            semester: 3,
+            courses: [
+                { id: "farmacologia", name: "Farmacología", area: "Clínica I", credits: "6 SCT", prerequisites: ["bioquimica"] },
+                { id: "fisiopatologia", name: "Fisiopatología", area: "Clínica I", credits: "6 SCT", prerequisites: ["biologia", "anatomia"] },
+                { id: "proceso1", name: "Proceso de Atención y Cualidades Básicas de Enfermería I", area: "Clínica I", credits: "14 SCT", prerequisites: ["intro2"] },
+                { id: "metodologia1", name: "Metodología de la Investigación I", area: "Clínica I", credits: "4 SCT", prerequisites: [] },
+                { id: "educacion-salud", name: "Educación para la Salud", area: "Clínica I", credits: "4 SCT", prerequisites: ["psicologia"] },
+                { id: "electivo1", name: "Electivo I", area: "Clínica I", credits: "4 SCT", prerequisites: [] },
+                { id: "ingles3", name: "Inglés III", area: "Institucional", credits: "2 SCT", prerequisites: ["ingles2"] }
+            ]
+        },
+        {
+            semester: 4,
+            courses: [
+                { id: "salud-mental", name: "Introducción a la Enfermería en Salud Mental", area: "Clínica II", credits: "4 SCT", prerequisites: ["psicologia"] },
+                { id: "salud-publica", name: "Salud Pública", area: "Clínica II", credits: "4 SCT", prerequisites: [] },
+                { id: "proceso2", name: "Proceso de Atención y Cualidades Básicas de Enfermería II", area: "Clínica II", credits: "14 SCT", prerequisites: ["proceso1"] },
+                { id: "enfermeria-familiar", name: "Introducción a la Enfermería y Salud Familiar", area: "Clínica II", credits: "16 SCT", prerequisites: ["proceso1"] },
+                { id: "administracion", name: "Administración en Enfermería", area: "Clínica II", credits: "4 SCT", prerequisites: [] },
+                { id: "metodologia2", name: "Metodología de la Investigación II", area: "Clínica II", credits: "4 SCT", prerequisites: ["metodologia1"] },
+                { id: "electivo2", name: "Electivo II", area: "Clínica II", credits: "4 SCT", prerequisites: [] }
+            ]
+        },
+        {
+            semester: 5,
+            courses: [
+                { id: "gestion-adulto1", name: "Gestión del Cuidado del Adulto y Adulto Mayor I", area: "Clínica III", credits: "16 SCT", prerequisites: ["proceso2", "fisiopatologia"] },
+                { id: "enfermeria-comunitaria1", name: "Enfermería Comunitaria y Salud Familiar", area: "Clínica III", credits: "16 SCT", prerequisites: ["enfermeria-familiar"] },
+                { id: "gestion-enfermeria", name: "Gestión en Enfermería", area: "Clínica III", credits: "4 SCT", prerequisites: ["administracion"] },
+                { id: "investigacion1", name: "Investigación en Enfermería I", area: "Clínica III", credits: "4 SCT", prerequisites: ["metodologia2"] },
+                { id: "electivo3", name: "Electivo III", area: "Clínica III", credits: "4 SCT", prerequisites: [] }
+            ]
+        },
+        {
+            semester: 6,
+            courses: [
+                { id: "gestion-adulto2", name: "Gestión del Cuidado del Adulto y Adulto Mayor II", area: "Clínica III", credits: "18 SCT", prerequisites: ["gestion-adulto1"] },
+                { id: "enfermeria-comunitaria2", name: "Enfermería Comunitaria y Salud Familiar", area: "Clínica III", credits: "100 SCT", prerequisites: ["enfermeria-comunitaria1"] },
+                { id: "gestion-salud-mental", name: "Gestión del Cuidado en Salud Mental", area: "Clínica III", credits: "10 SCT", prerequisites: ["salud-mental"] },
+                { id: "genero-cultura", name: "Género, Cultura y Sexualidad", area: "Clínica III", credits: "16 SCT", prerequisites: ["sociologia"] },
+                { id: "investigacion2", name: "Investigación en Enfermería II", area: "Clínica III", credits: "4 SCT", prerequisites: ["investigacion1"] }
+            ]
+        },
+        {
+            semester: 7,
+            courses: [
+                { id: "gestion-adulto3", name: "Gestión del Cuidado del Adulto y Adulto Mayor III", area: "Clínica III", credits: "9 SCT", prerequisites: ["gestion-adulto2"] },
+                { id: "enfermeria-comunitaria3", name: "Enfermería Comunitaria y Salud Familiar", area: "Clínica III", credits: "9 SCT", prerequisites: ["enfermeria-comunitaria2"] },
+                { id: "gestion-ninos1", name: "Gestión del Cuidado en Niños y Adolescentes I", area: "Clínica III", credits: "16 SCT", prerequisites: ["gestion-adulto2"] },
+                { id: "gerencia", name: "Gerencia en Enfermería", area: "Título Profesional", credits: "6 SCT", prerequisites: ["gestion-enfermeria"] },
+                { id: "proyecto-grado", name: "Proyecto de Seminario de Grado", area: "Título Profesional", credits: "6 SCT", prerequisites: ["investigacion2"] }
+            ]
+        },
+        {
+            semester: 8,
+            courses: [
+                { id: "urgencias", name: "Enfermería en Urgencias", area: "Título Profesional", credits: "18 SCT", prerequisites: ["gestion-adulto3"] },
+                { id: "gestion-ninos2", name: "Gestión del Cuidado en Niños y Adolescentes II", area: "Clínica III", credits: "15 SCT", prerequisites: ["gestion-ninos1"] },
+                { id: "formulacion-proyectos", name: "Formulación de Proyectos en Gestión y Gerencia", area: "Título Profesional", credits: "16 SCT", prerequisites: ["gerencia"] },
+                { id: "seminario-gestion", name: "Seminario de Gestión", area: "Título Profesional", credits: "6 SCT", prerequisites: ["proyecto-grado"] }
+            ]
+        },
         {
             semester: 9,
             courses: [
