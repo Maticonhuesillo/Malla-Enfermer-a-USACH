@@ -184,47 +184,114 @@
     <script>
         // Datos de la malla curricular actualizada
         const curriculumData = {
-            institution: "Universidad de Santiago de Chile",
-            career: "Enfermería",
-            year: 2024,
-            duration: "10 semestres",
-            semesters: [
-                {
-                    semester: 1,
-                    courses: [
-                        { name: "Química General", area: "Preclínica", credits: "6 SCT" },
-                        { name: "Biología", area: "Preclínica", credits: "6 SCT" },
-                        { name: "Anatomía", area: "Preclínica", credits: "6 SCT" },
-                        { name: "Introducción a la Enfermería I", area: "Preclínica", credits: "4 SCT" },
-                        { name: "Taller de Desarrollo Integral", area: "Preclínica", credits: "3 SCT" },
-                        { name: "Sociología", area: "Preclínica", credits: "4 SCT" },
-                        { name: "Inglés I", area: "Institucional", credits: "2 SCT" }
-                    ]
-                },
-                {
-                    semester: 2,
-                    courses: [
-                        { name: "Bioquímica", area: "Preclínica", credits: "6 SCT" },
-                        { name: "Agentes Biológicos en Salud Enfermedad", area: "Preclínica", credits: "6 SCT" },
-                        { name: "Psicología", area: "Preclínica", credits: "6 SCT" },
-                        { name: "Introducción a la Enfermería II", area: "Preclínica", credits: "6 SCT" },
-                        { name: "Histología", area: "Preclínica", credits: "4 SCT" },
-                        { name: "Taller de Relaciones Humanas", area: "Preclínica", credits: "4 SCT" },
-                        { name: "Inglés II", area: "Institucional", credits: "2 SCT" }
-                    ]
-                },
-                // Continuar con los demás semestres...
-                {
-                    semester: 10,
-                    courses: [
-                        { name: "Internado Enfermería del Adulto", area: "Título Profesional", credits: "20 SCT" },
-                        { name: "Internado Enfermería del Niño y Adolescente", area: "Título Profesional", credits: "20 SCT" },
-                        { name: "Internado Enfermería Comunitaria", area: "Título Profesional", credits: "20 SCT" }
-                    ]
-                }
+    institution: "Universidad de Santiago de Chile",
+    career: "Enfermería",
+    year: 2024,
+    duration: "10 semestres",
+    totalCredits: "No especificado en PDF",
+    semesters: [
+        {
+            semester: 1,
+            courses: [
+                { name: "Química General", area: "Preclínica", credits: "6 SCT" },
+                { name: "Biología", area: "Preclínica", credits: "6 SCT" },
+                { name: "Anatomía", area: "Preclínica", credits: "6 SCT" },
+                { name: "Introducción a la Enfermería I", area: "Preclínica", credits: "4 SCT" },
+                { name: "Taller de Desarrollo Integral", area: "Preclínica", credits: "3 SCT" },
+                { name: "Sociología", area: "Preclínica", credits: "4 SCT" },
+                { name: "Inglés I", area: "Institucional", credits: "2 SCT" }
             ]
-        };
-
+        },
+        {
+            semester: 2,
+            courses: [
+                { name: "Bioquímica", area: "Preclínica", credits: "6 SCT" },
+                { name: "Agentes Biológicos en Salud Enfermedad", area: "Preclínica", credits: "6 SCT" },
+                { name: "Psicología", area: "Preclínica", credits: "6 SCT" },
+                { name: "Introducción a la Enfermería II", area: "Preclínica", credits: "6 SCT" },
+                { name: "Histología", area: "Preclínica", credits: "4 SCT" },
+                { name: "Taller de Relaciones Humanas", area: "Preclínica", credits: "4 SCT" },
+                { name: "Inglés II", area: "Institucional", credits: "2 SCT" }
+            ]
+        },
+        {
+            semester: 3,
+            courses: [
+                { name: "Farmacología", area: "Clínica I", credits: "6 SCT" },
+                { name: "Fisiopatología", area: "Clínica I", credits: "6 SCT" },
+                { name: "Proceso de Atención y Cualidades Básicas de Enfermería I", area: "Clínica I", credits: "14 SCT" },
+                { name: "Metodología de la Investigación I", area: "Clínica I", credits: "4 SCT" },
+                { name: "Educación para la Salud", area: "Clínica I", credits: "4 SCT" },
+                { name: "Electivo I", area: "Clínica I", credits: "4 SCT" },
+                { name: "Inglés III", area: "Institucional", credits: "2 SCT" }
+            ]
+        },
+        {
+            semester: 4,
+            courses: [
+                { name: "Introducción a la Enfermería en Salud Mental", area: "Clínica II", credits: "4 SCT" },
+                { name: "Salud Pública", area: "Clínica II", credits: "4 SCT" },
+                { name: "Proceso de Atención y Cualidades Básicas de Enfermería II", area: "Clínica II", credits: "14 SCT" },
+                { name: "Introducción a la Enfermería y Salud Familial", area: "Clínica II", credits: "16 SCT" },
+                { name: "Administración en Enfermería", area: "Clínica II", credits: "4 SCT" },
+                { name: "Metodología de la Investigación II", area: "Clínica II", credits: "4 SCT" },
+                { name: "Electivo II", area: "Clínica II", credits: "4 SCT" }
+            ]
+        },
+        {
+            semester: 5,
+            courses: [
+                { name: "Gestión del Cuidado del Adulto y Adulto Mayor I", area: "Clínica III", credits: "16 SCT" },
+                { name: "Enfermería Comunitaria y Salud Familial", area: "Clínica III", credits: "16 SCT" },
+                { name: "Gestión en Enfermería", area: "Clínica III", credits: "4 SCT" },
+                { name: "Investigación en Enfermería I", area: "Clínica III", credits: "4 SCT" },
+                { name: "Electivo III", area: "Clínica III", credits: "4 SCT" }
+            ]
+        },
+        {
+            semester: 6,
+            courses: [
+                { name: "Gestión del Cuidado del Adulto y Adulto Mayor II", area: "Clínica III", credits: "18 SCT" },
+                { name: "Enfermería Comunitaria y Salud Familial", area: "Clínica III", credits: "100 SCT" },
+                { name: "Gestión del Cuidado en Salud Mental", area: "Clínica III", credits: "10 SCT" },
+                { name: "Género, Cultura y Sexualidad", area: "Clínica III", credits: "16 SCT" },
+                { name: "Investigación en Enfermería II", area: "Clínica III", credits: "4 SCT" }
+            ]
+        },
+        {
+            semester: 7,
+            courses: [
+                { name: "Gestión del Cuidado del Adulto y Adulto Mayor III", area: "Clínica III", credits: "9 SCT" },
+                { name: "Enfermería Comunitaria y Salud Familial", area: "Clínica III", credits: "9 SCT" },
+                { name: "Gestión del Cuidado en Niños y Adolescentes I", area: "Clínica III", credits: "16 SCT" },
+                { name: "Gerencia en Enfermería", area: "Título Profesional", credits: "6 SCT" },
+                { name: "Proyecto de Seminario de Grado", area: "Título Profesional", credits: "6 SCT" }
+            ]
+        },
+        {
+            semester: 8,
+            courses: [
+                { name: "Enfermería en Urgencias", area: "Título Profesional", credits: "18 SCT" },
+                { name: "Gestión del Cuidado en Niños y Adolescentes II", area: "Clínica III", credits: "15 SCT" },
+                { name: "Formulación de Proyectos en Gestión y Gerencia", area: "Título Profesional", credits: "16 SCT" },
+                { name: "Seminario de Gestión", area: "Título Profesional", credits: "6 SCT" }
+            ]
+        },
+        {
+            semester: 9,
+            courses: [
+                { name: "Internado Enfermería del Adulto", area: "Título Profesional", credits: "44 SCT" },
+                { name: "Internado Enfermería del Niño y Adolescente", area: "Título Profesional", credits: "46 SCT" }
+            ]
+        },
+        {
+            semester: 10,
+            courses: [
+                { name: "Internado Enfermería Comunitaria", area: "Título Profesional", credits: "44 SCT" }
+            ]
+        }
+    ]
+    };
         // Función para generar la malla
         function generateCurriculum() {
             const container = document.getElementById('semesters-container');
