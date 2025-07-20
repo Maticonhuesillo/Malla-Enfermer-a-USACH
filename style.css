@@ -1,64 +1,152 @@
 :root {
-  --vino: #8b0000;
-  --rosado-suave: #fbeaea;
-  --beige: #fff6f0;
-  --dorado: #c5a880;
-  --texto: #2e2e2e;
+    --color-vino-oscuro: #6D214F;
+    --color-vino: #B33771;
+    --color-vino-claro: #EAB543;
+    --color-uva: #82589F;
+    --color-terracota: #E66767;
+    --color-crema: #F8EFBA;
+    --color-blanco: #FFFFFF;
+    --color-texto: #2C3A47;
+    
+    /* Asignación a áreas */
+    --color-preclinica: var(--color-vino-oscuro);
+    --color-clinica1: var(--color-vino);
+    --color-clinica2: var(--color-uva);
+    --color-clinica3: var(--color-vino-claro);
+    --color-titulo: var(--color-terracota);
+    --color-institucional: var(--color-crema);
 }
 
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: var(--rosado-suave);
-  margin: 0;
-  padding: 0;
-  color: var(--texto);
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f3f7;
+    color: var(--color-texto);
 }
 
 header {
-  background-color: var(--vino);
-  color: white;
-  padding: 1.5rem;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    background: linear-gradient(135deg, var(--color-vino-oscuro), var(--color-vino));
+    color: var(--color-blanco);
+    padding: 1.5rem 2rem;
+    box-shadow: 0 4px 12px rgba(109, 33, 79, 0.2);
 }
 
-header h1 {
-  margin: 0;
-  font-size: 2rem;
-  letter-spacing: 1px;
+h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
 
-.semestre {
-  background-color: var(--beige);
-  margin: 1rem;
-  padding: 1rem;
-  border-left: 8px solid var(--vino);
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  transition: transform 0.2s ease;
+.controls {
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
-.semestre:hover {
-  transform: scale(1.02);
+button {
+    background-color: var(--color-vino);
+    color: var(--color-blanco);
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.semestre h2 {
-  margin-bottom: 0.5rem;
-  color: var(--vino);
-  font-weight: bold;
+button:hover {
+    background-color: var(--color-vino-oscuro);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
-.ramo {
-  padding: 0.6rem;
-  border-bottom: 1px solid #ddd;
-  cursor: pointer;
-  background-color: white;
-  border-radius: 6px;
-  margin-bottom: 0.3rem;
-  transition: background-color 0.2s ease;
+.legend {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-left: auto;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 0.8rem;
+    border-radius: 25px;
 }
 
-.ramo:hover {
-  background-color: var(--dorado);
-  color: white;
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--color-blanco);
+}
+
+/* ... (mantén el resto del CSS igual pero actualiza los colores de los cursos) ... */
+
+.course-preclinica { 
+    background-color: rgba(109, 33, 79, 0.08); 
+    border-left: 4px solid var(--color-preclinica);
+    color: var(--color-vino-oscuro);
+}
+.course-clinica1 { 
+    background-color: rgba(179, 55, 113, 0.08); 
+    border-left: 4px solid var(--color-clinica1);
+    color: var(--color-vino);
+}
+.course-clinica2 { 
+    background-color: rgba(130, 88, 159, 0.08); 
+    border-left: 4px solid var(--color-clinica2);
+    color: var(--color-uva);
+}
+.course-clinica3 { 
+    background-color: rgba(234, 181, 67, 0.15); 
+    border-left: 4px solid var(--color-clinica3);
+    color: #8a6d0b;
+}
+.course-titulo { 
+    background-color: rgba(230, 103, 103, 0.1); 
+    border-left: 4px solid var(--color-titulo);
+    color: var(--color-terracota);
+}
+.course-institucional { 
+    background-color: rgba(248, 239, 186, 0.3); 
+    border-left: 4px solid var(--color-institucional);
+    color: #8a6d0b;
+}
+
+/* ... (actualiza los paneles modales con la nueva paleta) ... */
+
+.info-panel, .course-detail {
+    background-color: var(--color-blanco);
+    border: 1px solid rgba(109, 33, 79, 0.1);
+    box-shadow: 0 8px 32px rgba(109, 33, 79, 0.15);
+}
+
+.info-panel h2, .course-detail h2 {
+    color: var(--color-vino-oscuro);
+    border-bottom: 2px solid var(--color-vino-claro);
+    padding-bottom: 0.5rem;
+}
+
+#close-info, #close-detail {
+    background-color: var(--color-terracota);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+/* Efectos hover para cursos */
+.course {
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.course:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px rgba(109, 33, 79, 0.15);
 }
