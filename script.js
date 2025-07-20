@@ -1,101 +1,108 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Elementos del DOM
-    const semestersContainer = document.getElementById('semesters-container');
-    const infoPanel = document.getElementById('info-panel');
-    const toggleInfoBtn = document.getElementById('toggle-info');
-    const closeInfoBtn = document.getElementById('close-info');
-    const resetViewBtn = document.getElementById('reset-view');
-    const courseDetail = document.getElementById('course-detail');
-    const closeDetailBtn = document.getElementById('close-detail');
+// Función para cargar y mostrar todos los ramos
+function loadAllCourses() {
+    const coursesList = document.getElementById('courses-list');
     
-    // Generar la malla curricular
-    function generateCurriculum() {
-        semestersContainer.innerHTML = '';
+    // Limpiar el contenedor primero
+    coursesList.innerHTML = '';
+    
+    // Verificar si curriculumData está definido y tiene semestres
+    if (!window.curriculumData || !curriculumData.semesters) {
+        coursesList.innerHTML = '<p class="error">No se encontraron datos de la malla curricular.</p>';
+        return;
+    }
+    
+    // Ordenar semestres por número
+    const sortedSemesters = [...curriculumData.semesters].sort((a, b) => a.semester - b.semester);
+    
+    // Crear elementos para cada ramo
+    sortedSemesters.forEach(semester => {
+        // Verificar si el semestre tiene cursos
+        if (!semester.courses || semester.courses.length === 0) return;
         
-        curriculumData.semesters.forEach((semester, index) => {
-            const semesterElement = document.createElement('div');
-            semesterElement.className = 'semester';
+        // Crear contenedor del semestre
+        const semesterContainer = document.createElement('div');
+        semesterContainer.className = 'semester-container';
+        
+        // Título del semestre
+        const semesterTitle = document.createElement('h4');
+        semesterTitle.className = 'semester-title';
+        semesterTitle.textContent = `Semestre ${semester.semester}`;
+        semesterContainer.appendChild(semesterTitle);
+        
+        // Lista de cursos
+        semester.courses.forEach(course => {
+            // Verificar que el curso tenga datos mínimos
+            if (!course.name || !course.credits) return;
             
-            const semesterHeader = document.createElement('div');
-            semesterHeader.className = 'semester-header';
+            const courseItem = document.createElement('div');
+            courseItem.className = `course-item ${getAreaClass(course.area)}`;
             
-            const semesterTitle = document.createElement('h3');
-            semesterTitle.className = 'semester-title';
-            semesterTitle.textContent = `${semester.semester}° Semestre`;
+            // Nombre del curso
+            const nameElement = document.createElement('div');
+            nameElement.className = 'course-name';
+            nameElement.textContent = course.name;
             
-            semesterHeader.appendChild(semesterTitle);
-            semesterElement.appendChild(semesterHeader);
+            // Créditos y prerrequisitos
+            const detailsElement = document.createElement('div');
+            detailsElement.className = 'course-details';
             
-            semester.courses.forEach(course => {
-                const courseElement = document.createElement('div');
-                courseElement.className = `course course-${course.area.toLowerCase().replace(/\s/g, '')}`;
-                
-                const courseName = document.createElement('div');
-                courseName.className = 'course-name';
-                courseName.textContent = course.name;
-                
-                const courseCredits = document.createElement('div');
-                courseCredits.className = 'course-credits';
-                courseCredits.textContent = `${course.credits} créditos`;
-                
-                courseElement.appendChild(courseName);
-                courseElement.appendChild(courseCredits);
-                
-                // Agregar evento de clic para mostrar detalles
-                courseElement.addEventListener('click', () => showCourseDetail(course, semester.semester));
-                
-                semesterElement.appendChild(courseElement);
+            const creditsSpan = document.createElement('span');
+            creditsSpan.className = 'course-credits';
+            creditsSpan.textContent = course.credits;
+            
+            const prereqSpan = document.createElement('span');
+            prereqSpan.className = 'course-prerequisites';
+            const prereqText = course.prerequisites && course.prerequisites.length > 0 
+                ? `Prerrequisitos: ${course.prerequisites.join(', ')}` 
+                : 'Sin prerrequisitos';
+            prereqSpan.textContent = prereqText;
+            
+            detailsElement.appendChild(creditsSpan);
+            detailsElement.appendChild(document.createTextNode(' • '));
+            detailsElement.appendChild(prereqSpan);
+            
+            // Área
+            const areaElement = document.createElement('div');
+            areaElement.className = 'course-area';
+            areaElement.textContent = course.area || 'Área no especificada';
+            
+            // Agregar elementos al item
+            courseItem.appendChild(nameElement);
+            courseItem.appendChild(detailsElement);
+            courseItem.appendChild(areaElement);
+            
+            // Hacer clickable
+            courseItem.addEventListener('click', () => {
+                showCourseDetail(course, semester.semester);
+                infoPanel.style.display = 'none';
             });
             
-            semestersContainer.appendChild(semesterElement);
+            semesterContainer.appendChild(courseItem);
         });
-    }
-    
-    // Mostrar detalles del curso
-    function showCourseDetail(course, semester) {
-        document.getElementById('detail-title').textContent = course.name;
-        document.getElementById('detail-semester').textContent = semester;
-        document.getElementById('detail-area').textContent = course.area;
-        document.getElementById('detail-credits').textContent = course.credits;
         
-        const prerequisites = course.prerequisites && course.prerequisites.length > 0 
-            ? course.prerequisites.join(', ') 
-            : 'Ninguno';
-        document.getElementById('detail-prerequisites').textContent = prerequisites;
-        
-        courseDetail.style.display = 'block';
-    }
-    
-    // Event listeners
-    toggleInfoBtn.addEventListener('click', () => {
-        infoPanel.style.display = 'block';
+        coursesList.appendChild(semesterContainer);
     });
-    
-    closeInfoBtn.addEventListener('click', () => {
-        infoPanel.style.display = 'none';
-    });
-    
-    resetViewBtn.addEventListener('click', () => {
-        generateCurriculum();
-    });
-    
-    closeDetailBtn.addEventListener('click', () => {
-        courseDetail.style.display = 'none';
-    });
-    
-    // Cerrar paneles al hacer clic fuera de ellos
-    window.addEventListener('click', (event) => {
-        if (event.target === infoPanel) {
-            infoPanel.style.display = 'none';
-        }
-        if (event.target === courseDetail) {
-            courseDetail.style.display = 'none';
-        }
-    });
-    
-    // Inicializar la malla
-    generateCurriculum();
-});
+}
 
-  malla.appendChild(div);
-});
+// Función auxiliar para obtener clase CSS según área
+function getAreaClass(area) {
+    if (!area) return '';
+    return 'area-' + area.toLowerCase().replace(/\s+/g, '-');
+}
+
+// Event listener mejorado
+if (toggleInfoBtn) {
+    toggleInfoBtn.addEventListener('click', function() {
+        try {
+            loadAllCourses();
+            infoPanel.style.display = 'block';
+            
+            // Desplazarse al inicio del panel
+            infoPanel.scrollTo(0, 0);
+        } catch (error) {
+            console.error('Error al cargar los cursos:', error);
+            const coursesList = document.getElementById('courses-list');
+            coursesList.innerHTML = '<p class="error">Error al cargar la información. Por favor intenta nuevamente.</p>';
+        }
+    });
+}
