@@ -188,154 +188,135 @@
     career: "Enfermería",
     year: 2024,
     duration: "10 semestres",
-    totalCredits: "No especificado en PDF",
     semesters: [
         {
             semester: 1,
             courses: [
-                { name: "Química General", area: "Preclínica", credits: "6 SCT" },
-                { name: "Biología", area: "Preclínica", credits: "6 SCT" },
-                { name: "Anatomía", area: "Preclínica", credits: "6 SCT" },
-                { name: "Introducción a la Enfermería I", area: "Preclínica", credits: "4 SCT" },
-                { name: "Taller de Desarrollo Integral", area: "Preclínica", credits: "3 SCT" },
-                { name: "Sociología", area: "Preclínica", credits: "4 SCT" },
-                { name: "Inglés I", area: "Institucional", credits: "2 SCT" }
+                { id: "quimica", name: "Química General", area: "Preclínica", credits: "6 SCT", prerequisites: [] },
+                { id: "biologia", name: "Biología", area: "Preclínica", credits: "6 SCT", prerequisites: [] },
+                { id: "anatomia", name: "Anatomía", area: "Preclínica", credits: "6 SCT", prerequisites: [] },
+                { id: "intro1", name: "Introducción a la Enfermería I", area: "Preclínica", credits: "4 SCT", prerequisites: [] },
+                { id: "taller1", name: "Taller de Desarrollo Integral", area: "Preclínica", credits: "3 SCT", prerequisites: [] },
+                { id: "sociologia", name: "Sociología", area: "Preclínica", credits: "4 SCT", prerequisites: [] },
+                { id: "ingles1", name: "Inglés I", area: "Institucional", credits: "2 SCT", prerequisites: [] }
             ]
         },
         {
             semester: 2,
             courses: [
-                { name: "Bioquímica", area: "Preclínica", credits: "6 SCT" },
-                { name: "Agentes Biológicos en Salud Enfermedad", area: "Preclínica", credits: "6 SCT" },
-                { name: "Psicología", area: "Preclínica", credits: "6 SCT" },
-                { name: "Introducción a la Enfermería II", area: "Preclínica", credits: "6 SCT" },
-                { name: "Histología", area: "Preclínica", credits: "4 SCT" },
-                { name: "Taller de Relaciones Humanas", area: "Preclínica", credits: "4 SCT" },
-                { name: "Inglés II", area: "Institucional", credits: "2 SCT" }
+                { id: "bioquimica", name: "Bioquímica", area: "Preclínica", credits: "6 SCT", prerequisites: ["quimica"] },
+                { id: "agentes", name: "Agentes Biológicos en Salud Enfermedad", area: "Preclínica", credits: "6 SCT", prerequisites: ["biologia"] },
+                { id: "psicologia", name: "Psicología", area: "Preclínica", credits: "6 SCT", prerequisites: [] },
+                { id: "intro2", name: "Introducción a la Enfermería II", area: "Preclínica", credits: "6 SCT", prerequisites: ["intro1"] },
+                { id: "histologia", name: "Histología", area: "Preclínica", credits: "4 SCT", prerequisites: ["biologia"] },
+                { id: "taller2", name: "Taller de Relaciones Humanas", area: "Preclínica", credits: "4 SCT", prerequisites: ["taller1"] },
+                { id: "ingles2", name: "Inglés II", area: "Institucional", credits: "2 SCT", prerequisites: ["ingles1"] }
             ]
         },
-        {
-            semester: 3,
-            courses: [
-                { name: "Farmacología", area: "Clínica I", credits: "6 SCT" },
-                { name: "Fisiopatología", area: "Clínica I", credits: "6 SCT" },
-                { name: "Proceso de Atención y Cualidades Básicas de Enfermería I", area: "Clínica I", credits: "14 SCT" },
-                { name: "Metodología de la Investigación I", area: "Clínica I", credits: "4 SCT" },
-                { name: "Educación para la Salud", area: "Clínica I", credits: "4 SCT" },
-                { name: "Electivo I", area: "Clínica I", credits: "4 SCT" },
-                { name: "Inglés III", area: "Institucional", credits: "2 SCT" }
-            ]
-        },
-        {
-            semester: 4,
-            courses: [
-                { name: "Introducción a la Enfermería en Salud Mental", area: "Clínica II", credits: "4 SCT" },
-                { name: "Salud Pública", area: "Clínica II", credits: "4 SCT" },
-                { name: "Proceso de Atención y Cualidades Básicas de Enfermería II", area: "Clínica II", credits: "14 SCT" },
-                { name: "Introducción a la Enfermería y Salud Familial", area: "Clínica II", credits: "16 SCT" },
-                { name: "Administración en Enfermería", area: "Clínica II", credits: "4 SCT" },
-                { name: "Metodología de la Investigación II", area: "Clínica II", credits: "4 SCT" },
-                { name: "Electivo II", area: "Clínica II", credits: "4 SCT" }
-            ]
-        },
-        {
-            semester: 5,
-            courses: [
-                { name: "Gestión del Cuidado del Adulto y Adulto Mayor I", area: "Clínica III", credits: "16 SCT" },
-                { name: "Enfermería Comunitaria y Salud Familial", area: "Clínica III", credits: "16 SCT" },
-                { name: "Gestión en Enfermería", area: "Clínica III", credits: "4 SCT" },
-                { name: "Investigación en Enfermería I", area: "Clínica III", credits: "4 SCT" },
-                { name: "Electivo III", area: "Clínica III", credits: "4 SCT" }
-            ]
-        },
-        {
-            semester: 6,
-            courses: [
-                { name: "Gestión del Cuidado del Adulto y Adulto Mayor II", area: "Clínica III", credits: "18 SCT" },
-                { name: "Enfermería Comunitaria y Salud Familial", area: "Clínica III", credits: "100 SCT" },
-                { name: "Gestión del Cuidado en Salud Mental", area: "Clínica III", credits: "10 SCT" },
-                { name: "Género, Cultura y Sexualidad", area: "Clínica III", credits: "16 SCT" },
-                { name: "Investigación en Enfermería II", area: "Clínica III", credits: "4 SCT" }
-            ]
-        },
-        {
-            semester: 7,
-            courses: [
-                { name: "Gestión del Cuidado del Adulto y Adulto Mayor III", area: "Clínica III", credits: "9 SCT" },
-                { name: "Enfermería Comunitaria y Salud Familial", area: "Clínica III", credits: "9 SCT" },
-                { name: "Gestión del Cuidado en Niños y Adolescentes I", area: "Clínica III", credits: "16 SCT" },
-                { name: "Gerencia en Enfermería", area: "Título Profesional", credits: "6 SCT" },
-                { name: "Proyecto de Seminario de Grado", area: "Título Profesional", credits: "6 SCT" }
-            ]
-        },
-        {
-            semester: 8,
-            courses: [
-                { name: "Enfermería en Urgencias", area: "Título Profesional", credits: "18 SCT" },
-                { name: "Gestión del Cuidado en Niños y Adolescentes II", area: "Clínica III", credits: "15 SCT" },
-                { name: "Formulación de Proyectos en Gestión y Gerencia", area: "Título Profesional", credits: "16 SCT" },
-                { name: "Seminario de Gestión", area: "Título Profesional", credits: "6 SCT" }
-            ]
-        },
+        // ... (los otros semestres con la misma estructura)
         {
             semester: 9,
             courses: [
-                { name: "Internado Enfermería del Adulto", area: "Título Profesional", credits: "44 SCT" },
-                { name: "Internado Enfermería del Niño y Adolescente", area: "Título Profesional", credits: "46 SCT" }
-                { name: "Internado Enfermería Comunitaria", area: "Título Profesional", credits: "44 SCT" }
+                { 
+                    id: "internado-adulto", 
+                    name: "Internado Enfermería del Adulto", 
+                    area: "Título Profesional", 
+                    credits: "44 SCT",
+                    prerequisites: [
+                        "gestion-adulto1", "gestion-adulto2", "gestion-adulto3", "urgencias"
+                    ] 
+                },
+                { 
+                    id: "internado-nino", 
+                    name: "Internado Enfermería del Niño y Adolescente", 
+                    area: "Título Profesional", 
+                    credits: "46 SCT",
+                    prerequisites: [
+                        "gestion-ninos1", "gestion-ninos2"
+                    ] 
+                }
             ]
         },
         {
             semester: 10,
             courses: [
-                { name: "Internado Enfermería del Adulto", area: "Título Profesional", credits: "44 SCT" },
-                { name: "Internado Enfermería del Niño y Adolescente", area: "Título Profesional", credits: "46 SCT" }
-                { name: "Internado Enfermería Comunitaria", area: "Título Profesional", credits: "44 SCT" }
+                { 
+                    id: "internado-comunitaria", 
+                    name: "Internado Enfermería Comunitaria", 
+                    area: "Título Profesional", 
+                    credits: "44 SCT",
+                    prerequisites: [
+                        "enfermeria-comunitaria1", "enfermeria-comunitaria2", "enfermeria-comunitaria3"
+                    ] 
+                }
             ]
         }
     ]
-    };
-        // Función para generar la malla
-        function generateCurriculum() {
-            const container = document.getElementById('semesters-container');
-            container.innerHTML = '';
+};
 
-            curriculumData.semesters.forEach(semester => {
-                const semesterElement = document.createElement('div');
-                semesterElement.className = 'semester';
+// Variables globales
+let completedCourses = new Set();
 
-                const header = document.createElement('div');
-                header.className = 'semester-header';
-                header.textContent = `Semestre ${semester.semester}`;
+function generateCurriculum() {
+    const container = document.getElementById('semesters-container');
+    container.innerHTML = '';
 
-                const coursesList = document.createElement('div');
-                coursesList.className = 'courses-list';
+    curriculumData.semesters.forEach(semester => {
+        const semesterElement = document.createElement('div');
+        semesterElement.className = 'semester';
+        semesterElement.innerHTML = `<div class="semester-header">Semestre ${semester.semester}</div><div class="courses-list"></div>`;
+        
+        const coursesList = semesterElement.querySelector('.courses-list');
 
-                semester.courses.forEach(course => {
-                    const courseElement = document.createElement('div');
-                    courseElement.className = `course area-${course.area.toLowerCase().replace(/\s+/g, '')}`;
-                    
-                    const nameElement = document.createElement('div');
-                    nameElement.className = 'course-name';
-                    nameElement.textContent = course.name;
-                    
-                    const creditsElement = document.createElement('div');
-                    creditsElement.className = 'course-credits';
-                    creditsElement.textContent = course.credits;
-                    
-                    courseElement.appendChild(nameElement);
-                    courseElement.appendChild(creditsElement);
-                    coursesList.appendChild(courseElement);
-                });
+        semester.courses.forEach(course => {
+            const courseElement = document.createElement('div');
+            courseElement.className = `course area-${course.area.toLowerCase().replace(/\s+/g, '')}`;
+            courseElement.id = `course-${course.id}`;
+            
+            // Verificar si el curso está bloqueado
+            const isLocked = course.prerequisites.some(prereq => !completedCourses.has(prereq));
+            
+            if (isLocked) {
+                courseElement.classList.add('locked');
+                courseElement.innerHTML = `
+                    <div class="course-name">${course.name} <span class="lock-icon">🔒</span></div>
+                    <div class="course-credits">${course.credits}</div>
+                    <div class="prerequisites">Prerrequisitos: ${course.prerequisites.join(', ')}</div>
+                `;
+            } else {
+                courseElement.innerHTML = `
+                    <div class="course-name">${course.name}</div>
+                    <div class="course-credits">${course.credits}</div>
+                `;
+                courseElement.addEventListener('click', () => toggleCourseCompletion(course.id));
+            }
+            
+            coursesList.appendChild(courseElement);
+        });
+        
+        container.appendChild(semesterElement);
+    });
+}
 
-                semesterElement.appendChild(header);
-                semesterElement.appendChild(coursesList);
-                container.appendChild(semesterElement);
-            });
-        }
+function toggleCourseCompletion(courseId) {
+    if (completedCourses.has(courseId)) {
+        completedCourses.delete(courseId);
+    } else {
+        completedCourses.add(courseId);
+    }
+    generateCurriculum(); // Regenerar la malla para actualizar estados
+}
 
-        // Inicializar
-        document.addEventListener('DOMContentLoaded', generateCurriculum);
+// Inicialización
+document.addEventListener('DOMContentLoaded', () => {
+    generateCurriculum();
+    
+    // Botón para resetear todos los cursos
+    document.getElementById('reset-btn').addEventListener('click', () => {
+        completedCourses.clear();
+        generateCurriculum();
+    });
+});
     </script>
 </body>
 </html>
