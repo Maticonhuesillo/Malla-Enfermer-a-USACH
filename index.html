@@ -3,76 +3,269 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Malla Curricular - Enfermería USACH 2016</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>Malla Curricular Enfermería USACH</title>
+    <style>
+        :root {
+            --vino-oscuro: #6D214F;
+            --vino: #B33771;
+            --vino-claro: #EAB543;
+            --uva: #82589F;
+            --terracota: #E66767;
+            --crema: #F8EFBA;
+            --blanco: #FFFFFF;
+            --texto: #2C3A47;
+            --fondo: #FFF5F9;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--fondo);
+            color: var(--texto);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--vino-oscuro), var(--vino));
+            color: var(--blanco);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(109, 33, 79, 0.3);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        button {
+            background-color: var(--vino);
+            color: var(--blanco);
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        button:hover {
+            background-color: var(--vino-oscuro);
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .semesters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .semester {
+            background-color: var(--blanco);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(109, 33, 79, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .semester:hover {
+            transform: translateY(-5px);
+        }
+
+        .semester-header {
+            background-color: var(--vino-oscuro);
+            color: var(--blanco);
+            padding: 0.8rem;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .courses-list {
+            padding: 1rem;
+        }
+
+        .course {
+            padding: 0.8rem;
+            margin-bottom: 0.8rem;
+            border-radius: 6px;
+            border-left: 4px solid var(--vino);
+            background-color: rgba(179, 55, 113, 0.05);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .course:hover {
+            background-color: rgba(179, 55, 113, 0.1);
+        }
+
+        .course-name {
+            font-weight: 500;
+            color: var(--vino-oscuro);
+            margin-bottom: 0.3rem;
+        }
+
+        .course-credits {
+            font-size: 0.85rem;
+            color: var(--uva);
+        }
+
+        /* Estilos para diferentes áreas */
+        .area-preclinica {
+            border-left-color: var(--vino-oscuro);
+            background-color: rgba(109, 33, 79, 0.05);
+        }
+        .area-clinica1 {
+            border-left-color: var(--vino);
+            background-color: rgba(179, 55, 113, 0.05);
+        }
+        .area-clinica2 {
+            border-left-color: var(--uva);
+            background-color: rgba(130, 88, 159, 0.05);
+        }
+        .area-clinica3 {
+            border-left-color: var(--vino-claro);
+            background-color: rgba(234, 181, 67, 0.1);
+        }
+        .area-titulo {
+            border-left-color: var(--terracota);
+            background-color: rgba(230, 103, 103, 0.1);
+        }
+        .area-institucional {
+            border-left-color: var(--crema);
+            background-color: rgba(248, 239, 186, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .semesters-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
-    <div class="header-content">
-        <h1>Malla Curricular de Enfermería <span>USACH 2016</span></h1>
-        <p class="subtitle">Plan de estudios interactivo</p>
-    </div>
-    <div class="controls">
-        <button id="toggle-info">ℹ️ Información</button>
-        <button id="reset-view">🔄 Reiniciar</button>
-        <div class="legend">
-            <span class="legend-item"><span class="color-preclinica"></span>Preclínica</span>
-            <span class="legend-item"><span class="color-clinica1"></span>Clínica I</span>
-            <span class="legend-item"><span class="color-clinica2"></span>Clínica II</span>
-            <span class="legend-item"><span class="color-clinica3"></span>Clínica III</span>
-            <span class="legend-item"><span class="color-titulo"></span>Título</span>
-            <span class="legend-item"><span class="color-institucional"></span>Institucional</span>
+        <h1>Enfermería USACH</h1>
+        <p class="subtitle">Malla Curricular 2024 • 10 Semestres</p>
+        <div class="controls">
+            <button id="toggle-info">ℹ️ Información General</button>
+            <button id="filter-btn">🔍 Filtrar por Área</button>
         </div>
-    </div>
     </header>
-    
-    <div class="info-panel" id="info-panel">
-    <h2>📊 Información General de la Malla</h2>
-    
-    <div class="general-info">
-        <div class="info-card">
-            <h3>🏛️ Institución</h3>
-            <p>Universidad de Santiago de Chile (USACH)</p>
-        </div>
-        
-        <div class="info-card">
-            <h3>📅 Plan</h3>
-            <p>Malla 2016 - Versión interactiva</p>
-        </div>
-        
-        <div class="info-card">
-            <h3>🧮 Créditos Totales</h3>
-            <p>240 SCT (Licenciatura)<br>120 SCT (Bachiller)</p>
-        </div>
-    </div>
-    
-    <h3>📚 Listado Completo de Ramos</h3>
-    <div class="courses-list" id="courses-list">
-        <!-- Los ramos se cargarán aquí dinámicamente -->
-    </div>
-    
-    <button id="close-info">Cerrar</button>
-    </div>
-    
+
     <div class="container">
-        <div class="semesters-container" id="semesters-container">
-            <!-- Los semestres se generarán dinámicamente con JavaScript -->
+        <div class="semesters-grid" id="semesters-container">
+            <!-- Semestres se generarán aquí con JavaScript -->
         </div>
     </div>
 
-    <div class="course-detail" id="course-detail">
-        <button id="close-detail">×</button>
-        <h2 id="detail-title"></h2>
-        <div class="detail-content">
-            <p><strong>Semestre:</strong> <span id="detail-semester"></span></p>
-            <p><strong>Área:</strong> <span id="detail-area"></span></p>
-            <p><strong>Créditos:</strong> <span id="detail-credits"></span></p>
-            <p><strong>Prerrequisitos:</strong> <span id="detail-prerequisites"></span></p>
-        </div>
-    </div>
+    <script>
+        // Datos de la malla curricular actualizada
+        const curriculumData = {
+            institution: "Universidad de Santiago de Chile",
+            career: "Enfermería",
+            year: 2024,
+            duration: "10 semestres",
+            semesters: [
+                {
+                    semester: 1,
+                    courses: [
+                        { name: "Química General", area: "Preclínica", credits: "6 SCT" },
+                        { name: "Biología", area: "Preclínica", credits: "6 SCT" },
+                        { name: "Anatomía", area: "Preclínica", credits: "6 SCT" },
+                        { name: "Introducción a la Enfermería I", area: "Preclínica", credits: "4 SCT" },
+                        { name: "Taller de Desarrollo Integral", area: "Preclínica", credits: "3 SCT" },
+                        { name: "Sociología", area: "Preclínica", credits: "4 SCT" },
+                        { name: "Inglés I", area: "Institucional", credits: "2 SCT" }
+                    ]
+                },
+                {
+                    semester: 2,
+                    courses: [
+                        { name: "Bioquímica", area: "Preclínica", credits: "6 SCT" },
+                        { name: "Agentes Biológicos en Salud Enfermedad", area: "Preclínica", credits: "6 SCT" },
+                        { name: "Psicología", area: "Preclínica", credits: "6 SCT" },
+                        { name: "Introducción a la Enfermería II", area: "Preclínica", credits: "6 SCT" },
+                        { name: "Histología", area: "Preclínica", credits: "4 SCT" },
+                        { name: "Taller de Relaciones Humanas", area: "Preclínica", credits: "4 SCT" },
+                        { name: "Inglés II", area: "Institucional", credits: "2 SCT" }
+                    ]
+                },
+                // Continuar con los demás semestres...
+                {
+                    semester: 10,
+                    courses: [
+                        { name: "Internado Enfermería del Adulto", area: "Título Profesional", credits: "20 SCT" },
+                        { name: "Internado Enfermería del Niño y Adolescente", area: "Título Profesional", credits: "20 SCT" },
+                        { name: "Internado Enfermería Comunitaria", area: "Título Profesional", credits: "20 SCT" }
+                    ]
+                }
+            ]
+        };
 
-    <script src="data.js"></script>
-    <script src="script.js"></script>
+        // Función para generar la malla
+        function generateCurriculum() {
+            const container = document.getElementById('semesters-container');
+            container.innerHTML = '';
+
+            curriculumData.semesters.forEach(semester => {
+                const semesterElement = document.createElement('div');
+                semesterElement.className = 'semester';
+
+                const header = document.createElement('div');
+                header.className = 'semester-header';
+                header.textContent = `Semestre ${semester.semester}`;
+
+                const coursesList = document.createElement('div');
+                coursesList.className = 'courses-list';
+
+                semester.courses.forEach(course => {
+                    const courseElement = document.createElement('div');
+                    courseElement.className = `course area-${course.area.toLowerCase().replace(/\s+/g, '')}`;
+                    
+                    const nameElement = document.createElement('div');
+                    nameElement.className = 'course-name';
+                    nameElement.textContent = course.name;
+                    
+                    const creditsElement = document.createElement('div');
+                    creditsElement.className = 'course-credits';
+                    creditsElement.textContent = course.credits;
+                    
+                    courseElement.appendChild(nameElement);
+                    courseElement.appendChild(creditsElement);
+                    coursesList.appendChild(courseElement);
+                });
+
+                semesterElement.appendChild(header);
+                semesterElement.appendChild(coursesList);
+                container.appendChild(semesterElement);
+            });
+        }
+
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', generateCurriculum);
+    </script>
 </body>
 </html>
